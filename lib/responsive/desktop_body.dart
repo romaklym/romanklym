@@ -86,7 +86,7 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
     return Container(
       color: const Color(0xFF393431),
       child: Padding(
-        padding: const EdgeInsets.all(24.0),
+        padding: const EdgeInsets.all(30.0),
         child: Container(
           decoration: BoxDecoration(
             color: const Color(0xFF393431),

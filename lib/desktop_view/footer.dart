@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:klymroman/resusable_widgets/battery.dart';
 import 'package:klymroman/resusable_widgets/custom_button.dart';
 import 'package:klymroman/theme/app_colors.dart';
 import 'package:klymroman/theme/app_sizes.dart';
@@ -125,6 +126,10 @@ class Footer extends StatelessWidget {
                   inactiveColor: AppColors.footerInactiveColor,
                   windowVisibility: windowVisibility,
                 ),
+                const SizedBox(
+                  width: AppSizes.medium,
+                ),
+                const BatteryIndicator(),
                 const SizedBox(
                   width: AppSizes.medium,
                 ),

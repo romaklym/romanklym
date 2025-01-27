@@ -5,7 +5,7 @@ class ClockWidget extends StatefulWidget {
   final double fontSize;
   const ClockWidget({
     super.key,
-    this.fontSize = 14.0,
+    this.fontSize = 12.0,
   });
 
   @override
