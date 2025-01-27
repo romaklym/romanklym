@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:klymroman/pages/about_page.dart';
-import 'package:klymroman/pages/faq_page.dart';
-import 'package:klymroman/pages/game_page.dart';
-import 'package:klymroman/pages/how_to_buy.dart';
-import 'package:klymroman/pages/roadmap_page.dart';
-import 'package:klymroman/pages/tokenomics_page.dart';
+import 'package:klymroman/home_page.dart';
 import 'package:klymroman/theme/app_colors.dart';
 import 'package:klymroman/theme/app_sizes.dart';
 import 'package:klymroman/theme/app_strings.dart';
@@ -36,12 +31,12 @@ class DockStation extends StatefulWidget {
 }
 
 class _DockStationState extends State<DockStation> {
-  void _openDialog(Widget dialog) {
-    showDialog(
-      context: context,
-      builder: (_) => dialog,
-    );
-  }
+  // void _openDialog(Widget dialog) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (_) => dialog,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +58,7 @@ class _DockStationState extends State<DockStation> {
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (_) => const HowToBuyDialog(),
+                    builder: (_) => const HomePage(),
                   );
                 },
                 width: widget.width,
@@ -79,9 +74,7 @@ class _DockStationState extends State<DockStation> {
                 iconColor: AppColors.dockGamesColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(
-                  const GameDialog(),
-                ),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -95,11 +88,7 @@ class _DockStationState extends State<DockStation> {
                 iconColor: AppColors.dockTokenomicsColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(const TokenomicsDialog(
-                  chartRadius: AppSizes.desktopTokenChartRadius,
-                  chartCenterSpaceRadius:
-                      AppSizes.desktopTokenChartCenterSpaceRadius,
-                )),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -114,9 +103,7 @@ class _DockStationState extends State<DockStation> {
                     AppColors.dockRoadmapColor, // Vibrant peach for roadmap
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(
-                  const RoadmapDialog(),
-                ),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -130,9 +117,7 @@ class _DockStationState extends State<DockStation> {
                 iconColor: AppColors.dockAboutColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(
-                  const AboutUsDialog(),
-                ),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -146,9 +131,7 @@ class _DockStationState extends State<DockStation> {
                 iconColor: AppColors.dockFaqColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(
-                  const FaqDialog(),
-                ),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,

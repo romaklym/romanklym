@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:klymroman/pages/about_page.dart';
-import 'package:klymroman/pages/faq_page.dart';
-import 'package:klymroman/pages/game_page.dart';
-import 'package:klymroman/pages/how_to_buy.dart';
-import 'package:klymroman/pages/roadmap_page.dart';
-import 'package:klymroman/pages/tokenomics_page.dart';
 import 'package:klymroman/theme/app_colors.dart';
 import 'package:klymroman/theme/app_sizes.dart';
 import 'package:klymroman/theme/app_strings.dart';
@@ -36,12 +30,12 @@ class DockStationMobile extends StatefulWidget {
 }
 
 class _DockStationMobileState extends State<DockStationMobile> {
-  void _openDialog(Widget dialog) {
-    showDialog(
-      context: context,
-      builder: (_) => dialog,
-    );
-  }
+  // void _openDialog(Widget dialog) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (_) => dialog,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,19 +54,7 @@ class _DockStationMobileState extends State<DockStationMobile> {
                 iconColor: AppColors.dockBuyColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (_) => const HowToBuyDialog(
-                      widthFactor: AppSizes.dialogMobileWidth,
-                      heightFactor: AppSizes.dialogMobileHeight,
-                      fontSize: AppSizes.dockMobileFontSize,
-                      iconSize: AppSizes.dockMobileIconSize,
-                      titleBarHeight: AppSizes.dockMobileTitleBarHeight,
-                      padding: AppSizes.dockMobilePadding,
-                    ),
-                  );
-                },
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -86,14 +68,7 @@ class _DockStationMobileState extends State<DockStationMobile> {
                 iconColor: AppColors.dockGamesColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor, // Retro brown
-                onTap: () => _openDialog(const GameDialog(
-                  widthFactor: AppSizes.dialogMobileWidth,
-                  heightFactor: AppSizes.dialogMobileHeight,
-                  fontSize: AppSizes.dockMobileFontSize,
-                  iconSize: AppSizes.dockMobileIconSize,
-                  titleBarHeight: AppSizes.dockMobileTitleBarHeight,
-                  padding: AppSizes.dockMobilePadding,
-                )),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -107,19 +82,7 @@ class _DockStationMobileState extends State<DockStationMobile> {
                 iconColor: AppColors.dockTokenomicsColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor, // Retro brown
-                onTap: () => _openDialog(const TokenomicsDialog(
-                  widthFactor: AppSizes.dialogMobileWidth,
-                  heightFactor: AppSizes.dialogMobileHeight,
-                  fontSize: AppSizes.dockMobileFontSize,
-                  iconSize: AppSizes.dockMobileIconSize,
-                  titleBarHeight: AppSizes.dockMobileTitleBarHeight,
-                  padding: AppSizes.dockMobilePadding,
-                  paddingTitleBar: AppSizes.dockMobilePadding,
-                  spacing: 0.0,
-                  runSpacing: 0.0,
-                  chartRadius: 60.0,
-                  chartCenterSpaceRadius: 30.0,
-                )),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -133,17 +96,7 @@ class _DockStationMobileState extends State<DockStationMobile> {
                 iconColor: AppColors.dockRoadmapColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(const RoadmapDialog(
-                  widthFactor: AppSizes.dialogMobileWidth,
-                  heightFactor: AppSizes.dialogMobileHeight,
-                  padding: AppSizes.dockMobilePadding,
-                  fontSize: AppSizes.dockMobileFontSize,
-                  iconSize: AppSizes.dockMobileIconSize,
-                  titleBarHeight: AppSizes.dockMobileTitleBarHeight,
-                  circleAvatarRadius: 20.0,
-                  squareStepWidth: 160.0,
-                  squareStepHeight: 160.0,
-                )),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -157,16 +110,7 @@ class _DockStationMobileState extends State<DockStationMobile> {
                 iconColor: AppColors.dockAboutColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(const AboutUsDialog(
-                  widthFactor: AppSizes.dialogMobileWidth,
-                  heightFactor: AppSizes.dialogMobileHeight,
-                  padding: AppSizes.dockItemPaddingHorizontal,
-                  fontSize: AppSizes.dockMobileFontSize,
-                  iconSize: AppSizes.dockMobileIconSize,
-                  titleBarHeight: AppSizes.dockMobileTitleBarHeight,
-                  containerWidth: 190,
-                  containerHeight: 230,
-                )),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,
@@ -180,17 +124,7 @@ class _DockStationMobileState extends State<DockStationMobile> {
                 iconColor: AppColors.dockFaqColor,
                 textColor: AppColors.dockTextColor,
                 borderColor: AppColors.dockBorderColor,
-                onTap: () => _openDialog(const FaqDialog(
-                  widthFactor: AppSizes.dialogMobileWidth,
-                  heightFactor: AppSizes.dialogMobileHeight,
-                  padding: AppSizes.dockMobilePadding,
-                  fontSize: AppSizes.dockMobileFontSize,
-                  titleBarHeight: AppSizes.dockMobileTitleBarHeight,
-                  iconSize: AppSizes.dockMobileIconSize,
-                  cardElevation: 5.0,
-                  cardBorderRadius: 10.0,
-                  expansionTilePadding: 12.0,
-                )),
+                onTap: () {},
                 width: widget.width,
                 height: widget.height,
                 svgWidth: widget.svgWidth,

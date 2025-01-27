@@ -4,7 +4,6 @@ import 'package:klymroman/resusable_widgets/custom_button.dart';
 import 'package:klymroman/theme/app_colors.dart';
 import 'package:klymroman/theme/app_sizes.dart';
 import 'package:klymroman/theme/app_strings.dart';
-import 'package:klymroman/widgets/buy_token_widget.dart';
 import 'package:klymroman/resusable_widgets/clock_widget.dart';
 import 'package:klymroman/widgets/start_button.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -48,20 +47,14 @@ class Footer extends StatelessWidget {
               horizontal: AppSizes.medium,
             ),
             child: StartButton(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const BuyTokenDialog(
-                    initialUrl: AppStrings.startButtonLink,
-                  ),
-                );
-              },
+              onTap: () {},
             ),
           ),
           Row(
             children: [
               CustomButton(
-                label: AppStrings.footerDesktopMobile,
+                svgPath: 'assets/images/ubisoft.svg',
+                label: "Ubisoft",
                 onTap: onToggleDesktopWindow,
                 windowKey: 'desktopWindow',
                 windowVisibility: windowVisibility,
@@ -75,17 +68,6 @@ class Footer extends StatelessWidget {
                 label: AppStrings.footerDesktopWelcome,
                 onTap: onToggleWelcomeWindow,
                 windowKey: 'welcomeWindow',
-                windowVisibility: windowVisibility,
-                activeColor: AppColors.footerActiveColor,
-                inactiveColor: AppColors.footerInactiveColor,
-              ),
-              const SizedBox(
-                width: AppSizes.medium,
-              ),
-              CustomButton(
-                label: AppStrings.footerDesktopCountdown,
-                onTap: onToggleCountdownWindow,
-                windowKey: 'countdownWindow',
                 windowVisibility: windowVisibility,
                 activeColor: AppColors.footerActiveColor,
                 inactiveColor: AppColors.footerInactiveColor,

@@ -6,12 +6,12 @@ class StickyNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> goals = [
-      {"text": "Launch tokenomics, roadmap, white paper", "checked": true},
-      {"text": "Launch \$NACHO Token", "checked": true},
-      {"text": "Launch Touch Grass", "checked": false},
-      {"text": "Hire more talent!", "checked": false},
-      {"text": "Start building World Order Game", "checked": false},
-      {"text": "...keep building", "checked": false},
+      {"text": "1", "checked": true},
+      {"text": "2", "checked": true},
+      {"text": "3", "checked": false},
+      {"text": "4", "checked": false},
+      {"text": "5", "checked": false},
+      {"text": "6", "checked": false},
     ];
 
     return Container(

@@ -49,14 +49,29 @@ class _ClockWidgetState extends State<ClockWidget> {
           ),
         ],
       ),
-      child: Text(
-        "${_currentTime.hour.toString().padLeft(2, '0')}:${_currentTime.minute.toString().padLeft(2, '0')}",
-        style: TextStyle(
-          fontFamily: "Audiowide",
-          fontSize: widget.fontSize,
-          color: Colors.black54,
-          fontWeight: FontWeight.bold,
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            "${_currentTime.hour.toString().padLeft(2, '0')}:${_currentTime.minute.toString().padLeft(2, '0')}",
+            style: TextStyle(
+              fontFamily: "Audiowide",
+              fontSize: widget.fontSize,
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            "${_currentTime.day.toString().padLeft(2, '0')}/${_currentTime.month.toString().padLeft(2, '0')}/${_currentTime.year}",
+            style: TextStyle(
+              fontFamily: "Audiowide",
+              fontSize: widget.fontSize * 0.8,
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

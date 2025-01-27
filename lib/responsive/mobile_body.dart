@@ -8,9 +8,7 @@ import 'package:klymroman/pages/mobile_app_window.dart';
 import 'package:klymroman/pages/welcome_desktop_window.dart';
 import 'package:klymroman/resusable_widgets/draggable_widget.dart';
 import 'package:klymroman/theme/app_theme.dart';
-import 'package:klymroman/widgets/countdown_timer.dart';
-import 'package:klymroman/resusable_widgets/marquee_banner.dart';
-import 'package:klymroman/widgets/solana_price_tracker.dart';
+import 'package:klymroman/resusable_widgets/ticker_tape.dart';
 import 'package:klymroman/widgets/sticky_note.dart';
 
 class MyMobileBody extends StatefulWidget {
@@ -124,7 +122,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                       ),
                     ),
                   ),
-                  child: MarqueeText(
+                  child: TickerTape(
                     text:
                         "\$NACHO ▲ PRICE: \$0.0000026 ▼ VOL: \$6.5M ▲ MKT CAP: \$126.65M ",
                     style: AppTextStyles.tickerTape,
@@ -137,7 +135,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SolanaPriceWidget(),
                       Text(
                         "Roman Klym",
                         style: const TextStyle(
@@ -197,7 +194,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
       bottomNavigationBar: FooterMobile(
         onToggleDesktopWindow: () => _toggleWindow('desktopWindow'),
         onToggleWelcomeWindow: () => _toggleWindow('welcomeWindow'),
-        onToggleCountdownWindow: () => _toggleWindow('countdownWindow'),
         onToggleStickyNote: () => _toggleWindow('stickyNote'),
         windowVisibility: windowVisibility,
       ),
@@ -243,20 +239,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
           addressFontSize: 10.0,
           padding: 4.0,
           onToggleWelcomeWindow: () => _toggleWindow('welcomeWindow'),
-          windowVisibility: windowVisibility,
-        );
-      case 'countdownWindow':
-        return CountdownTimerWindow(
-          width: 200,
-          height: 100,
-          contHeight: 40,
-          fontSizeBanner: 12.0,
-          iconSizeBanner: 20.0,
-          gradientFontSize: 20.0,
-          bannerPaddingLeft: 8.0,
-          countdownFontSize: 14.0,
-          padding: 4.0,
-          onToggleCountdownWindow: () => _toggleWindow('countdownWindow'),
           windowVisibility: windowVisibility,
         );
       default:

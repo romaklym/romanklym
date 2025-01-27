@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomButton extends StatelessWidget {
   final Color activeColor;
   final Color inactiveColor;
   final String? label; // Optional label
   final IconData? icon; // Optional icon
+  final String? svgPath;
   final VoidCallback onTap;
   final String? windowKey; // Optional parameter
   final Map<String, bool>? windowVisibility; // Optional parameter
@@ -15,8 +17,9 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.activeColor,
     required this.inactiveColor,
-    this.label, // Label is now optional
-    this.icon, // Icon is now optional
+    this.label,
+    this.icon,
+    this.svgPath,
     required this.onTap,
     this.windowKey,
     this.windowVisibility,
@@ -63,7 +66,18 @@ class CustomButton extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Display either label or icon
+              if (svgPath != null) ...[
+                SvgPicture.asset(
+                  svgPath!,
+                  width: iconSize,
+                  height: iconSize,
+                  colorFilter: ColorFilter.mode(
+                    iconColor,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                SizedBox(width: 8.0),
+              ],
               if (icon != null) ...[
                 Icon(
                   icon,

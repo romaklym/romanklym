@@ -24,8 +24,8 @@ class WelcomeDesktopWindow extends StatefulWidget {
   final Map<String, bool> windowVisibility;
   const WelcomeDesktopWindow({
     super.key,
-    this.width = 600,
-    this.height = 300,
+    this.width = 500,
+    this.height = 200,
     this.contHeight = 40,
     this.fontSizeBanner = 16.0,
     this.iconSizeBanner = 22.0,
@@ -145,15 +145,15 @@ class _WelcomeDesktopWindowState extends State<WelcomeDesktopWindow>
               ),
 
               // Content Area
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 400),
                     child: Column(
-                      // crossAxisAlignment: CrossAxisAlignment.center,
-                      // mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // Gradient Animation Text
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: GradientAnimationText(
@@ -164,9 +164,9 @@ class _WelcomeDesktopWindowState extends State<WelcomeDesktopWindow>
                                 fontSize: widget.gradientFontSize,
                                 fontWeight: FontWeight.w900,
                               ),
+                              textAlign: TextAlign.center,
                             ),
-                            duration: const Duration(
-                                seconds: 4), // Animation duration
+                            duration: const Duration(seconds: 4),
                             colors: const [
                               Colors.greenAccent,
                               Colors.lightBlueAccent,
@@ -176,20 +176,7 @@ class _WelcomeDesktopWindowState extends State<WelcomeDesktopWindow>
                             ],
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(bottom: 16.0),
-                        //   child: Text(
-                        //     "Nacho Apps is the first game studio on Solana, creating innovative play-to-earn mobile games powered by blockchain technology. Our mission is to build a thriving ecosystem of games where players can explore, compete, and earn real value. Join us in shaping the future of gaming!",
-                        //     style: TextStyle(
-                        //       fontFamily: "Audiowide",
-                        //       color: Color(0xFF704214),
-                        //       fontSize: widget.bannerStudioFontSize,
-                        //     ),
-                        //     textAlign: TextAlign.center,
-                        //   ),
-                        // ),
-
-                        // Address Copy Container
+                        const SizedBox(height: 16),
                         CopyTextWidget(
                           copyText: "klymroman@protonmail.com",
                           address: "klymroman@protonmail.com",

@@ -5,10 +5,8 @@ import 'package:klymroman/pages/mobile_app_window.dart';
 import 'package:klymroman/pages/welcome_desktop_window.dart';
 import 'package:klymroman/resusable_widgets/draggable_widget.dart';
 import 'package:klymroman/theme/app_theme.dart';
-import 'package:klymroman/widgets/app_bar_widgets.dart';
-import 'package:klymroman/widgets/countdown_timer.dart';
 import 'package:klymroman/desktop_view/dock_station.dart';
-import 'package:klymroman/resusable_widgets/marquee_banner.dart';
+import 'package:klymroman/resusable_widgets/ticker_tape.dart';
 import 'package:klymroman/widgets/sticky_note.dart';
 
 class MyDesktopBody extends StatefulWidget {
@@ -139,32 +137,10 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
                               ),
                             ),
                           ),
-                          child: MarqueeText(
+                          child: TickerTape(
                             text: "Hi, I'm Roman! Nice to meet you! ",
                             style: AppTextStyles.tickerTape,
                             velocity: 40, // Adjust speed as needed
-                          ),
-                        ),
-                        // AppBar Widgets
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              const Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "Roman Klym",
-                                  style: TextStyle(
-                                    fontFamily: "Nabla",
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 32,
-                                  ),
-                                ),
-                              ),
-                              // Right-aligned AppBar Widgets
-                              AppBarWidgets(),
-                            ],
                           ),
                         ),
                       ],
@@ -234,12 +210,6 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
           height: 400,
           onToggleWelcomeWindow: () => _toggleWindow('welcomeWindow'),
           windowVisibility: windowVisibility,
-        );
-      case 'countdownWindow':
-        return CountdownTimerWindow(
-          onToggleCountdownWindow: () => _toggleWindow('countdownWindow'),
-          windowVisibility: windowVisibility,
-          width: 300,
         );
       default:
         return const SizedBox.shrink();

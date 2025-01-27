@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher.dart';
 class FooterMobile extends StatelessWidget {
   final VoidCallback onToggleDesktopWindow;
   final VoidCallback onToggleWelcomeWindow;
-  final VoidCallback onToggleCountdownWindow;
   final VoidCallback onToggleStickyNote;
   final Map<String, bool> windowVisibility; // Add windowVisibility parameter
 
@@ -16,7 +15,6 @@ class FooterMobile extends StatelessWidget {
     super.key,
     required this.onToggleDesktopWindow,
     required this.onToggleWelcomeWindow,
-    required this.onToggleCountdownWindow,
     required this.onToggleStickyNote,
     required this.windowVisibility, // Initialize windowVisibility
   });
@@ -78,16 +76,6 @@ class FooterMobile extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               CustomButton(
-                icon: FontAwesomeIcons.stopwatch,
-                onTap: onToggleCountdownWindow,
-                windowKey: 'countdownWindow', // Pass key
-                windowVisibility: windowVisibility, // Pass visibility map
-                activeColor: const Color(0xFFA5A5A5),
-                inactiveColor: const Color(0xFFF5D9AF),
-                fontSize: 8.0,
-              ),
-              const SizedBox(width: 4),
-              CustomButton(
                 icon: FontAwesomeIcons.noteSticky,
                 onTap: onToggleStickyNote,
                 windowKey: 'stickyNote', // Pass key
@@ -108,34 +96,6 @@ class FooterMobile extends StatelessWidget {
               ],
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          //   child: Row(
-          //     children: [
-          //       CustomButton(
-          //         label: "Touch Grass, LLC.",
-          //         onTap: () {
-          //           showDialog(
-          //             context: context,
-          //             builder: (_) => const klymromanDialog(),
-          //           );
-          //         },
-          //       ),
-          //       const SizedBox(width: 8), // Spacing between buttons
-          //       CustomButton(
-          //         label: "Copyright © 2025",
-          //         onTap: onToggleDesktopWindow, // Trigger the callback
-          //       ),
-          //       const SizedBox(width: 8),
-          //       CustomButton(
-          //         label: "All rights reserved",
-          //         onTap: () {}, // Static text, no functionality
-          //       ),
-          //       const SizedBox(width: 8),
-          //       const ClockWidget(),
-          //     ],
-          //   ),
-          // ),
         ],
       ),
     );

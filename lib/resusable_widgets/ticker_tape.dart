@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MarqueeText extends StatefulWidget {
+class TickerTape extends StatefulWidget {
   final String text;
   final TextStyle style;
   final double velocity;
 
-  const MarqueeText({
+  const TickerTape({
     super.key,
     required this.text,
     required this.style,
@@ -13,10 +13,10 @@ class MarqueeText extends StatefulWidget {
   });
 
   @override
-  State<MarqueeText> createState() => _MarqueeTextState();
+  State<TickerTape> createState() => _TickerTapeState();
 }
 
-class _MarqueeTextState extends State<MarqueeText>
+class _TickerTapeState extends State<TickerTape>
     with SingleTickerProviderStateMixin {
   late ScrollController _scrollController;
   late double _screenWidth;

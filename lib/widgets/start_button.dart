@@ -48,13 +48,13 @@ class StartButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               FaIcon(
-                FontAwesomeIcons.dollarSign,
+                FontAwesomeIcons.windows,
                 color: Colors.black54,
                 size: iconSize, // Use customizable icon size
               ),
               SizedBox(width: sizedBoxSize), // Use customizable spacing
               Text(
-                "Buy",
+                "Start",
                 style: TextStyle(
                   fontFamily: "Audiowide",
                   fontSize: fontSize, // Use customizable font size

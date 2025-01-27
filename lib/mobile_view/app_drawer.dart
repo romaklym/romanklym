@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:klymroman/pages/careers_page.dart';
-import 'package:klymroman/pages/privacy_policy_page.dart';
-import 'package:klymroman/pages/tos_page.dart';
 import 'package:klymroman/theme/app_colors.dart';
 import 'package:klymroman/theme/app_sizes.dart';
 import 'package:klymroman/theme/app_strings.dart';
@@ -173,16 +170,7 @@ class _AppDrawerState extends State<AppDrawer> {
             backgroundColor: AppColors.privacyColor,
             textColor: AppColors.whiteText,
             borderColor: AppColors.borderColor,
-            onTap: () {
-              Navigator.of(context).pop();
-              showDialog(
-                context: context,
-                builder: (_) => const PrivacyPolicyDialog(
-                  widthSize: AppSizes.dialogMobileWidth,
-                  heightSize: AppSizes.dialogMobileHeight,
-                ),
-              );
-            },
+            onTap: () {},
           ),
           _buildCustomDrawerItem(
             icon: FontAwesomeIcons.fileShield,
@@ -190,16 +178,7 @@ class _AppDrawerState extends State<AppDrawer> {
             backgroundColor: AppColors.termsColor,
             textColor: AppColors.whiteText,
             borderColor: AppColors.borderColor,
-            onTap: () {
-              Navigator.of(context).pop();
-              showDialog(
-                context: context,
-                builder: (_) => const TermsOfUseDialog(
-                  widthSize: AppSizes.dialogMobileWidth,
-                  heightSize: AppSizes.dialogMobileHeight,
-                ),
-              );
-            },
+            onTap: () {},
           ),
           _buildCustomDrawerItem(
             icon: FontAwesomeIcons.briefcase,
@@ -207,16 +186,7 @@ class _AppDrawerState extends State<AppDrawer> {
             backgroundColor: AppColors.careersColor,
             textColor: AppColors.whiteText,
             borderColor: AppColors.borderColor,
-            onTap: () {
-              Navigator.of(context).pop();
-              showDialog(
-                context: context,
-                builder: (_) => const CareersDialog(
-                  widthSize: AppSizes.dialogMobileWidth,
-                  heightSize: AppSizes.dialogMobileHeight,
-                ),
-              );
-            },
+            onTap: () {},
           ),
         ],
       ),
