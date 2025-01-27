@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klymroman/pages/careers_page.dart';
-import 'package:klymroman/pages/privacy_policy_page.dart';
-import 'package:klymroman/pages/tos_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:klymroman/resusable_widgets/custom_button.dart';
 import 'package:klymroman/theme/app_colors.dart';
 import 'package:klymroman/theme/app_sizes.dart';
@@ -9,6 +7,7 @@ import 'package:klymroman/theme/app_strings.dart';
 import 'package:klymroman/widgets/buy_token_widget.dart';
 import 'package:klymroman/resusable_widgets/clock_widget.dart';
 import 'package:klymroman/widgets/start_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
   final VoidCallback onToggleDesktopWindow;
@@ -112,12 +111,15 @@ class Footer extends StatelessWidget {
             child: Row(
               children: [
                 CustomButton(
-                  label: AppStrings.footerDesktopPrivacy,
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => const PrivacyPolicyDialog(),
-                    );
+                  icon: FontAwesomeIcons.linkedin,
+                  label: "LinkedIn",
+                  onTap: () async {
+                    const url = 'https://www.linkedin.com/in/klymroman/';
+                    final uri = Uri.parse(url);
+                    if (await canLaunchUrl(uri)) {
+                      await launchUrl(uri,
+                          mode: LaunchMode.externalApplication);
+                    }
                   },
                   activeColor: AppColors.footerActiveColor,
                   inactiveColor: AppColors.footerInactiveColor,
@@ -127,29 +129,19 @@ class Footer extends StatelessWidget {
                   width: AppSizes.medium,
                 ),
                 CustomButton(
-                  label: AppStrings.footerDesktopTerms,
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => const TermsOfUseDialog(),
-                    );
+                  icon: FontAwesomeIcons.github,
+                  label: "GitHub",
+                  onTap: () async {
+                    const url = 'https://github.com/romaklym';
+                    final uri = Uri.parse(url);
+                    if (await canLaunchUrl(uri)) {
+                      await launchUrl(uri,
+                          mode: LaunchMode.externalApplication);
+                    }
                   },
                   activeColor: AppColors.footerActiveColor,
                   inactiveColor: AppColors.footerInactiveColor,
-                ),
-                const SizedBox(
-                  width: AppSizes.medium,
-                ),
-                CustomButton(
-                  label: AppStrings.footerDesktopCareers,
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => const CareersDialog(),
-                    );
-                  },
-                  activeColor: AppColors.footerActiveColor,
-                  inactiveColor: AppColors.footerInactiveColor,
+                  windowVisibility: windowVisibility,
                 ),
                 const SizedBox(
                   width: AppSizes.medium,

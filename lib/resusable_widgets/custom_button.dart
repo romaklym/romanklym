@@ -64,12 +64,14 @@ class CustomButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               // Display either label or icon
-              if (icon != null)
+              if (icon != null) ...[
                 Icon(
                   icon,
                   color: iconColor,
                   size: iconSize,
                 ),
+                SizedBox(width: 8.0),
+              ],
               if (label != null)
                 Text(
                   label!,
