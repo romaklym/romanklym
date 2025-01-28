@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class VokiGames extends StatefulWidget {
+class Lionbridge extends StatefulWidget {
   final double width;
   final double height;
   final double contHeight;
@@ -21,7 +21,7 @@ class VokiGames extends StatefulWidget {
   final VoidCallback onToggleWelcomeWindow;
   final Function(double, double)? onPositionChanged;
   final Map<String, bool> windowVisibility;
-  const VokiGames({
+  const Lionbridge({
     super.key,
     this.width = 500,
     this.height = 200,
@@ -45,10 +45,10 @@ class VokiGames extends StatefulWidget {
   });
 
   @override
-  State<VokiGames> createState() => _VokiGamesState();
+  State<Lionbridge> createState() => _LionbridgeState();
 }
 
-class _VokiGamesState extends State<VokiGames>
+class _LionbridgeState extends State<Lionbridge>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   bool isFullScreen = false;
@@ -116,7 +116,7 @@ class _VokiGamesState extends State<VokiGames>
                     Padding(
                       padding: EdgeInsets.only(left: widget.bannerPaddingLeft),
                       child: Text(
-                        "Voki Games",
+                        "Lionbridge",
                         style: TextStyle(
                           fontFamily: "Audiowide",
                           fontSize: widget.fontSizeBanner,
@@ -168,7 +168,7 @@ class _VokiGamesState extends State<VokiGames>
                         ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Text(
-                              "Voki Games",
+                              "Lionbridge",
                               style: TextStyle(
                                 fontFamily: "Audiowide",
                                 fontSize: widget.gradientFontSize,

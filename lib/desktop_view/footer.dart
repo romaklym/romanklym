@@ -9,19 +9,21 @@ import 'package:klymroman/widgets/start_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
-  final VoidCallback onToggleDesktopWindow;
   final VoidCallback onToggleWelcomeWindow;
-  final VoidCallback onToggleStickyNote;
+  final VoidCallback onToggleUbisoft;
   final VoidCallback onToggleVokiGames;
+  final VoidCallback onToggleLionbridge;
+  final VoidCallback onToggleStickyNote;
   final VoidCallback onToggleLocation;
   final Map<String, bool> windowVisibility;
 
   const Footer({
     super.key,
-    required this.onToggleDesktopWindow,
     required this.onToggleWelcomeWindow,
-    required this.onToggleStickyNote,
+    required this.onToggleUbisoft,
     required this.onToggleVokiGames,
+    required this.onToggleLionbridge,
+    required this.onToggleStickyNote,
     required this.onToggleLocation,
     required this.windowVisibility,
   });
@@ -57,8 +59,8 @@ class Footer extends StatelessWidget {
               CustomButton(
                 svgPath: 'assets/images/ubisoft.svg',
                 iconSize: 18.0,
-                onTap: onToggleDesktopWindow,
-                windowKey: 'desktopWindow',
+                onTap: onToggleUbisoft,
+                windowKey: 'ubisoft',
                 windowVisibility: windowVisibility,
                 activeColor: AppColors.footerActiveColor,
                 inactiveColor: AppColors.footerInactiveColor,
@@ -81,8 +83,8 @@ class Footer extends StatelessWidget {
               CustomButton(
                 svgPath: 'assets/images/lionbridge.svg',
                 iconSize: 14.0,
-                onTap: onToggleWelcomeWindow,
-                windowKey: 'desktopWindow',
+                onTap: onToggleLionbridge,
+                windowKey: 'lionbridge',
                 windowVisibility: windowVisibility,
                 activeColor: AppColors.footerActiveColor,
                 inactiveColor: AppColors.footerInactiveColor,

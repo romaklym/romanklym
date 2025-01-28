@@ -4,7 +4,7 @@ import 'package:klymroman/mobile_view/dock_station_mobile.dart';
 import 'package:klymroman/mobile_view/drawer_button.dart';
 import 'package:klymroman/mobile_view/footer_mobile.dart';
 import 'package:klymroman/models/widget_position_model.dart';
-import 'package:klymroman/pages/mobile_app_window.dart';
+import 'package:klymroman/pages/ubisoft.dart';
 import 'package:klymroman/pages/welcome_desktop_window.dart';
 import 'package:klymroman/resusable_widgets/draggable_widget.dart';
 import 'package:klymroman/theme/app_theme.dart';
@@ -71,6 +71,16 @@ class _MyMobileBodyState extends State<MyMobileBody> {
     setState(() {
       renderOrder.remove(key);
       renderOrder.add(key);
+    });
+  }
+
+  void _handleWelcomeWindowPositionChange(double left, double top) {
+    setState(() {
+      widgetPositions['welcomeWindow'] = WidgetPosition(left: left, top: top);
+      widgetPositions['ubisoft'] = WidgetPosition(left: left, top: top);
+      widgetPositions['vokiGames'] = WidgetPosition(left: left, top: top);
+      widgetPositions['lionbridge'] = WidgetPosition(left: left, top: top);
+      _hasMovedWelcomeWindow = true;
     });
   }
 
@@ -205,21 +215,12 @@ class _MyMobileBodyState extends State<MyMobileBody> {
       case 'stickyNote':
         return StickyNoteWidget();
       case 'desktopWindow':
-        return DesktopWindow(
-          title: "Mobile App",
-          width: 300,
-          height: 200,
-          containerHeight: 40.0,
-          iconSize: 20.0,
-          fontSize: 12.0,
-          padding: 8.0,
-          isButtons: true,
-          content: Image.asset(
-            'assets/images/mockup.png',
-            fit: BoxFit.cover,
-          ),
-          onToggleDesktopWindow: () => _toggleWindow('desktopWindow'),
+        return Ubisoft(
+          height: 450,
+          width: 600,
+          onToggleWelcomeWindow: () => _toggleWindow('ubisoft'),
           windowVisibility: windowVisibility,
+          onPositionChanged: _handleWelcomeWindowPositionChange,
         );
       case 'welcomeWindow':
         return WelcomeDesktopWindow(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:klymroman/desktop_view/footer.dart';
 import 'package:klymroman/models/widget_position_model.dart';
+import 'package:klymroman/pages/lionbridge.dart';
 import 'package:klymroman/pages/location.dart';
+import 'package:klymroman/pages/ubisoft.dart';
 import 'package:klymroman/pages/voki_games.dart';
-import 'package:klymroman/pages/mobile_app_window.dart';
 import 'package:klymroman/pages/welcome_desktop_window.dart';
 import 'package:klymroman/resusable_widgets/draggable_widget.dart';
 import 'package:klymroman/resusable_widgets/ticker_tape.dart';
@@ -22,10 +23,11 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
   bool isDesktopWindowVisible = false;
 
   Map<String, bool> windowVisibility = {
-    'desktopWindow': false,
+    'ubisoft': false,
+    'vokiGames': false,
+    'lionbridge': false,
     'stickyNote': false,
     'welcomeWindow': true,
-    'vokiGames': false,
     'location': false,
   };
 
@@ -42,14 +44,15 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
 
       setState(() {
         widgetPositions = {
-          'desktopWindow': WidgetPosition(left: 30, bottom: 80),
           'welcomeWindow': WidgetPosition(
             left: (screenWidth - welcomeWindowWidth) / 2,
             top: 150,
           ),
           'stickyNote': WidgetPosition(right: 10, bottom: 10),
+          'ubisoft': WidgetPosition(left: 30, bottom: 80),
           'vokiGames': WidgetPosition(
               left: (screenWidth - welcomeWindowWidth) / 2, top: 150),
+          'lionbridge': WidgetPosition(left: 30, bottom: 80),
           'location': WidgetPosition(
             right: 10,
             bottom: 10,
@@ -58,10 +61,11 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
 
         // Initial render order
         renderOrder = [
-          'stickyNote',
-          'desktopWindow',
           'welcomeWindow',
+          'stickyNote',
+          'ubisoft',
           'vokiGames',
+          'lionbridge',
           'location',
         ];
       });
@@ -84,6 +88,9 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
   void _handleWelcomeWindowPositionChange(double left, double top) {
     setState(() {
       widgetPositions['welcomeWindow'] = WidgetPosition(left: left, top: top);
+      widgetPositions['ubisoft'] = WidgetPosition(left: left, top: top);
+      widgetPositions['vokiGames'] = WidgetPosition(left: left, top: top);
+      widgetPositions['lionbridge'] = WidgetPosition(left: left, top: top);
       _hasMovedWelcomeWindow = true;
     });
   }
@@ -191,9 +198,10 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
                 ],
               ),
               bottomNavigationBar: Footer(
-                onToggleDesktopWindow: () => _toggleWindow('desktopWindow'),
                 onToggleWelcomeWindow: () => _toggleWindow('welcomeWindow'),
+                onToggleUbisoft: () => _toggleWindow('ubisoft'),
                 onToggleVokiGames: () => _toggleWindow('vokiGames'),
+                onToggleLionbridge: () => _toggleWindow('lionbridge'),
                 onToggleStickyNote: () => _toggleWindow('stickyNote'),
                 onToggleLocation: () => _toggleWindow('location'),
                 windowVisibility: windowVisibility,
@@ -209,23 +217,18 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
     switch (key) {
       case 'stickyNote':
         return StickyNoteWidget();
-      case 'desktopWindow':
-        return DesktopWindow(
-          title: "Mobile App",
-          width: 620,
-          height: 430,
-          isButtons: true,
-          content: Image.asset(
-            'assets/images/mockup.png',
-            fit: BoxFit.cover,
-          ),
-          onToggleDesktopWindow: () => _toggleWindow('desktopWindow'),
-          windowVisibility: windowVisibility,
-        );
       case 'welcomeWindow':
         return WelcomeDesktopWindow(
           height: 400,
           onToggleWelcomeWindow: () => _toggleWindow('welcomeWindow'),
+          windowVisibility: windowVisibility,
+          onPositionChanged: _handleWelcomeWindowPositionChange,
+        );
+      case 'ubisoft':
+        return Ubisoft(
+          height: 450,
+          width: 600,
+          onToggleWelcomeWindow: () => _toggleWindow('ubisoft'),
           windowVisibility: windowVisibility,
           onPositionChanged: _handleWelcomeWindowPositionChange,
         );
@@ -234,6 +237,14 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
           height: 450,
           width: 600,
           onToggleWelcomeWindow: () => _toggleWindow('vokiGames'),
+          windowVisibility: windowVisibility,
+          onPositionChanged: _handleWelcomeWindowPositionChange,
+        );
+      case 'lionbridge':
+        return Lionbridge(
+          height: 450,
+          width: 600,
+          onToggleWelcomeWindow: () => _toggleWindow('lionbridge'),
           windowVisibility: windowVisibility,
           onPositionChanged: _handleWelcomeWindowPositionChange,
         );
