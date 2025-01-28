@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:klymroman/desktop_view/footer.dart';
 import 'package:klymroman/models/widget_position_model.dart';
+import 'package:klymroman/pages/location.dart';
+import 'package:klymroman/pages/voki_games.dart';
 import 'package:klymroman/pages/mobile_app_window.dart';
 import 'package:klymroman/pages/welcome_desktop_window.dart';
 import 'package:klymroman/resusable_widgets/draggable_widget.dart';
+import 'package:klymroman/resusable_widgets/ticker_tape.dart';
 import 'package:klymroman/theme/app_theme.dart';
 import 'package:klymroman/desktop_view/dock_station.dart';
-import 'package:klymroman/resusable_widgets/ticker_tape.dart';
 import 'package:klymroman/widgets/sticky_note.dart';
 
 class MyDesktopBody extends StatefulWidget {
@@ -23,7 +25,8 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
     'desktopWindow': false,
     'stickyNote': false,
     'welcomeWindow': true,
-    'countdownWindow': true,
+    'vokiGames': false,
+    'location': false,
   };
 
   Map<String, WidgetPosition> widgetPositions = {};
@@ -45,7 +48,12 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
             top: 150,
           ),
           'stickyNote': WidgetPosition(right: 10, bottom: 10),
-          'countdownWindow': WidgetPosition(right: 20, top: 100),
+          'vokiGames': WidgetPosition(
+              left: (screenWidth - welcomeWindowWidth) / 2, top: 150),
+          'location': WidgetPosition(
+            right: 10,
+            bottom: 10,
+          ),
         };
 
         // Initial render order
@@ -53,7 +61,8 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
           'stickyNote',
           'desktopWindow',
           'welcomeWindow',
-          'countdownWindow'
+          'vokiGames',
+          'location',
         ];
       });
     });
@@ -69,6 +78,13 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
     setState(() {
       renderOrder.remove(key);
       renderOrder.add(key);
+    });
+  }
+
+  void _handleWelcomeWindowPositionChange(double left, double top) {
+    setState(() {
+      widgetPositions['welcomeWindow'] = WidgetPosition(left: left, top: top);
+      _hasMovedWelcomeWindow = true;
     });
   }
 
@@ -177,8 +193,9 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
               bottomNavigationBar: Footer(
                 onToggleDesktopWindow: () => _toggleWindow('desktopWindow'),
                 onToggleWelcomeWindow: () => _toggleWindow('welcomeWindow'),
-                onToggleCountdownWindow: () => _toggleWindow('countdownWindow'),
+                onToggleVokiGames: () => _toggleWindow('vokiGames'),
                 onToggleStickyNote: () => _toggleWindow('stickyNote'),
+                onToggleLocation: () => _toggleWindow('location'),
                 windowVisibility: windowVisibility,
               ),
             ),
@@ -210,6 +227,23 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
           height: 400,
           onToggleWelcomeWindow: () => _toggleWindow('welcomeWindow'),
           windowVisibility: windowVisibility,
+          onPositionChanged: _handleWelcomeWindowPositionChange,
+        );
+      case 'vokiGames':
+        return VokiGames(
+          height: 450,
+          width: 600,
+          onToggleWelcomeWindow: () => _toggleWindow('vokiGames'),
+          windowVisibility: windowVisibility,
+          onPositionChanged: _handleWelcomeWindowPositionChange,
+        );
+      case 'location':
+        return LocationDialog(
+          height: 300,
+          width: 300,
+          onToggleWelcomeWindow: () => _toggleWindow('location'),
+          windowVisibility: windowVisibility,
+          onPositionChanged: _handleWelcomeWindowPositionChange,
         );
       default:
         return const SizedBox.shrink();

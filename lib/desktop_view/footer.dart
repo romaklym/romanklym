@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:klymroman/resusable_widgets/battery.dart';
 import 'package:klymroman/resusable_widgets/custom_button.dart';
 import 'package:klymroman/theme/app_colors.dart';
 import 'package:klymroman/theme/app_sizes.dart';
@@ -12,16 +11,18 @@ import 'package:url_launcher/url_launcher.dart';
 class Footer extends StatelessWidget {
   final VoidCallback onToggleDesktopWindow;
   final VoidCallback onToggleWelcomeWindow;
-  final VoidCallback onToggleCountdownWindow;
   final VoidCallback onToggleStickyNote;
+  final VoidCallback onToggleVokiGames;
+  final VoidCallback onToggleLocation;
   final Map<String, bool> windowVisibility;
 
   const Footer({
     super.key,
     required this.onToggleDesktopWindow,
     required this.onToggleWelcomeWindow,
-    required this.onToggleCountdownWindow,
     required this.onToggleStickyNote,
+    required this.onToggleVokiGames,
+    required this.onToggleLocation,
     required this.windowVisibility,
   });
   @override
@@ -55,8 +56,32 @@ class Footer extends StatelessWidget {
             children: [
               CustomButton(
                 svgPath: 'assets/images/ubisoft.svg',
-                label: "Ubisoft",
+                iconSize: 18.0,
                 onTap: onToggleDesktopWindow,
+                windowKey: 'desktopWindow',
+                windowVisibility: windowVisibility,
+                activeColor: AppColors.footerActiveColor,
+                inactiveColor: AppColors.footerInactiveColor,
+              ),
+              const SizedBox(
+                width: AppSizes.medium,
+              ),
+              CustomButton(
+                svgPath: 'assets/images/playrix.svg',
+                iconSize: 18.0,
+                onTap: onToggleVokiGames,
+                windowKey: 'vokiGames',
+                windowVisibility: windowVisibility,
+                activeColor: AppColors.footerActiveColor,
+                inactiveColor: AppColors.footerInactiveColor,
+              ),
+              const SizedBox(
+                width: AppSizes.medium,
+              ),
+              CustomButton(
+                svgPath: 'assets/images/lionbridge.svg',
+                iconSize: 14.0,
+                onTap: onToggleWelcomeWindow,
                 windowKey: 'desktopWindow',
                 windowVisibility: windowVisibility,
                 activeColor: AppColors.footerActiveColor,
@@ -129,7 +154,16 @@ class Footer extends StatelessWidget {
                 const SizedBox(
                   width: AppSizes.medium,
                 ),
-                const BatteryIndicator(),
+                CustomButton(
+                  icon: FontAwesomeIcons.locationDot,
+                  iconSize: 18.0,
+                  label: "Location",
+                  onTap: onToggleLocation,
+                  windowKey: 'location',
+                  windowVisibility: windowVisibility,
+                  activeColor: AppColors.footerActiveColor,
+                  inactiveColor: const Color(0xFF7BBBA0),
+                ),
                 const SizedBox(
                   width: AppSizes.medium,
                 ),

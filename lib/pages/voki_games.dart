@@ -1,9 +1,8 @@
+import 'package:easy_web_view/easy_web_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gradient_animation_text/flutter_gradient_animation_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:klymroman/resusable_widgets/copy_text_widget.dart';
 
-class WelcomeDesktopWindow extends StatefulWidget {
+class VokiGames extends StatefulWidget {
   final double width;
   final double height;
   final double contHeight;
@@ -23,7 +22,7 @@ class WelcomeDesktopWindow extends StatefulWidget {
   final VoidCallback onToggleWelcomeWindow;
   final Function(double, double)? onPositionChanged;
   final Map<String, bool> windowVisibility;
-  const WelcomeDesktopWindow({
+  const VokiGames({
     super.key,
     this.width = 500,
     this.height = 200,
@@ -47,10 +46,10 @@ class WelcomeDesktopWindow extends StatefulWidget {
   });
 
   @override
-  State<WelcomeDesktopWindow> createState() => _WelcomeDesktopWindowState();
+  State<VokiGames> createState() => _VokiGamesState();
 }
 
-class _WelcomeDesktopWindowState extends State<WelcomeDesktopWindow>
+class _VokiGamesState extends State<VokiGames>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   bool isFullScreen = false;
@@ -118,7 +117,7 @@ class _WelcomeDesktopWindowState extends State<WelcomeDesktopWindow>
                     Padding(
                       padding: EdgeInsets.only(left: widget.bannerPaddingLeft),
                       child: Text(
-                        "Welcome",
+                        "Voki Games",
                         style: TextStyle(
                           fontFamily: "Audiowide",
                           fontSize: widget.fontSizeBanner,
@@ -167,36 +166,13 @@ class _WelcomeDesktopWindowState extends State<WelcomeDesktopWindow>
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: GradientAnimationText(
-                            text: Text(
-                              "Hi, I'm Roman",
-                              style: TextStyle(
-                                fontFamily: "Audiowide",
-                                fontSize: widget.gradientFontSize,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            duration: const Duration(seconds: 4),
-                            colors: const [
-                              Colors.greenAccent,
-                              Colors.lightBlueAccent,
-                              Colors.purpleAccent,
-                              Colors.pinkAccent,
-                              Colors.yellowAccent,
-                            ],
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: EasyWebView(
+                            src: 'https://www.linkedin.com/in/klymroman/',
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: 800,
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        CopyTextWidget(
-                          copyText: "klymroman@protonmail.com",
-                          address: "klymroman@protonmail.com",
-                          padding: widget.paddingCopyText,
-                          addressFontSize: widget.fontSizeCopyText,
-                          contWidth: widget.contCopyTextWidth,
-                          addressIconSize: widget.iconSizeCopyText,
                         ),
                       ],
                     ),

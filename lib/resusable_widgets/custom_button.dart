@@ -4,12 +4,12 @@ import 'package:flutter_svg/svg.dart';
 class CustomButton extends StatelessWidget {
   final Color activeColor;
   final Color inactiveColor;
-  final String? label; // Optional label
-  final IconData? icon; // Optional icon
+  final String? label;
+  final IconData? icon;
   final String? svgPath;
   final VoidCallback onTap;
-  final String? windowKey; // Optional parameter
-  final Map<String, bool>? windowVisibility; // Optional parameter
+  final String? windowKey;
+  final Map<String, bool>? windowVisibility;
   final double fontSize;
   final double iconSize;
 
@@ -24,23 +24,22 @@ class CustomButton extends StatelessWidget {
     this.windowKey,
     this.windowVisibility,
     this.fontSize = 12.0,
-    this.iconSize = 16.0, // Default size for icons
-  }) : assert(label != null || icon != null,
-            'Either label or icon must be provided.');
+    this.iconSize = 16.0,
+  }) : assert(icon != null || svgPath != null || label != null,
+            'At least one of: icon, svgPath, or label must be provided.');
 
   @override
   Widget build(BuildContext context) {
-    // Determine button color based on visibility or fallback to default
     final buttonColor = (windowVisibility != null &&
             windowKey != null &&
             windowVisibility![windowKey] == true)
-        ? activeColor // Active color
-        : inactiveColor; // Default inactive color
+        ? activeColor
+        : inactiveColor;
 
     final iconColor = (windowVisibility != null &&
             windowKey != null &&
             windowVisibility![windowKey] == true)
-        ? Colors.white70 // Active color
+        ? Colors.white70
         : Colors.black54;
 
     return Container(
@@ -48,7 +47,7 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF704214), // Shadow color
+            color: const Color(0xFF704214),
             offset: const Offset(-5, 5),
             blurRadius: 0,
           ),
@@ -59,14 +58,14 @@ class CustomButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: buttonColor, // Use determined button color
+            color: buttonColor,
             border: Border.all(color: Colors.black54, width: 1.5),
             borderRadius: BorderRadius.circular(4),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (svgPath != null) ...[
+              if (svgPath != null)
                 SvgPicture.asset(
                   svgPath!,
                   width: iconSize,
@@ -76,17 +75,14 @@ class CustomButton extends StatelessWidget {
                     BlendMode.srcIn,
                   ),
                 ),
-                SizedBox(width: 8.0),
-              ],
-              if (icon != null) ...[
+              if (icon != null)
                 Icon(
                   icon,
                   color: iconColor,
                   size: iconSize,
                 ),
-                SizedBox(width: 8.0),
-              ],
-              if (label != null)
+              if (label != null) ...[
+                const SizedBox(width: 8.0),
                 Text(
                   label!,
                   style: TextStyle(
@@ -96,6 +92,7 @@ class CustomButton extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+              ],
             ],
           ),
         ),
