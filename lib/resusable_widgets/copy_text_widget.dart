@@ -64,7 +64,7 @@ class CopyTextWidget extends StatelessWidget {
               boxShadow: const [
                 BoxShadow(
                   color: Color(0xFF704214),
-                  offset: Offset(-5, 5),
+                  offset: Offset(5, 5),
                   blurRadius: 0,
                 ),
               ],

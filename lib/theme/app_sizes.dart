@@ -14,7 +14,7 @@ class AppSizes {
 
   // Style
   static const double styleRoundedEdgesCircular = 4.0;
-  static const double styleBoxShadowFirst = -5.0;
+  static const double styleBoxShadowFirst = 5.0;
   static const double styleBoxShadowSecond = 5.0;
   static const double styleBorderWidth = 2.0;
   static const double styleDividerWidth = 3.0;

@@ -44,7 +44,7 @@ class _ClockWidgetState extends State<ClockWidget> {
         boxShadow: [
           BoxShadow(
             color: Color(0xFF704214), // Shadow color
-            offset: const Offset(-5, 5),
+            offset: const Offset(5, 5),
             blurRadius: 0,
           ),
         ],
